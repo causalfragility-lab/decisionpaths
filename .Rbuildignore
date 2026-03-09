@@ -3,3 +3,5 @@
 ^LICENSE\.md$
 ^README\.Rmd$
 ^README\.html$
+^CRAN-SUBMISSION$
+^cran-comments\.md$
