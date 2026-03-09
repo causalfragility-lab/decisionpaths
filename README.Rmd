@@ -1,54 +1,48 @@
----
-output: github_document
----
-
-<!-- README.md is generated from README.Rmd. Please edit that file -->
-
-```{r, include = FALSE}
-knitr::opts_chunk$set(
-  collapse = TRUE,
-  comment = "#>",
-  fig.path = "man/figures/README-",
-  out.width = "100%"
-)
-```
-
 # decisionpaths
 
 <!-- badges: start -->
 <!-- badges: end -->
 
-The goal of decisionpaths is to ...
+`decisionpaths` is an R package for analyzing **longitudinal decision pathways** in adaptive systems.  
+It provides tools to represent sequences of decisions across time and compute diagnostic metrics describing how those decisions evolve.
+
+The package implements the **Decision Infrastructure Paradigm** (Hait, 2025), allowing researchers to study how decision systems behave across repeated periods.
+
+Core functionality includes:
+
+• **Path descriptors** – summarize individual decision trajectories  
+• **Decision Reliability Index (DRI)** – quantify stability of decisions over time  
+• **Path entropy** – measure diversity of decision pathways  
+• **Equity diagnostics** – compare decision exposure across groups  
+• **Integrated audits** – generate system-level summaries of decision infrastructures
+
+The package is designed for applications in:
+
+- education policy and adaptive interventions  
+- algorithmic decision systems  
+- longitudinal treatment assignment  
+- AI-assisted decision infrastructure
 
 ## Installation
 
-You can install the development version of decisionpaths like so:
+You can install the development version from GitHub:
 
-``` r
-# FILL THIS IN! HOW CAN PEOPLE INSTALL YOUR DEV PACKAGE?
-```
-
-## Example
-
-This is a basic example which shows you how to solve a common problem:
-
-```{r example}
+```r
+install.packages("remotes")
+remotes::install_github("causalfragility-lab/decisionpaths")
 library(decisionpaths)
-## basic example code
-```
 
-What is special about using `README.Rmd` instead of just `README.md`? You can include R chunks like so:
+dp <- dp_build(data, id, time, decision)
 
-```{r cars}
-summary(cars)
-```
+desc <- dp_describe(dp)
+dri  <- dp_dri(dp)
+ent  <- dp_entropy(dp)
 
-You'll still need to render `README.Rmd` regularly, to keep `README.md` up-to-date. `devtools::build_readme()` is handy for this.
+plot(dp, type = "heatmap")
 
-You can also embed plots, for example:
+After editing the README:
 
-```{r pressure, echo = FALSE}
-plot(pressure)
-```
+Run in R:
 
-In that case, don't forget to commit and push the resulting figure files, so they display on GitHub and CRAN.
+```r
+devtools::build_readme()
