@@ -11,3 +11,4 @@
 
 ## Downstream dependencies
 None — this is a new submission.
+devtools::build_readme()
