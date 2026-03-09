@@ -11,8 +11,8 @@ Tools for constructing and auditing decision paths from panel data.
 \seealso{
 Useful links:
 \itemize{
-  \item \url{https://github.com/subirhait/decisionpaths}
-  \item Report bugs at \url{https://github.com/subirhait/decisionpaths/issues}
+  \item \url{https://github.com/causalfragility-lab/decisionpaths}
+  \item Report bugs at \url{https://github.com/causalfragility-lab/decisionpaths/issues}
 }
 
 }
