@@ -167,7 +167,7 @@ citation("decisionpaths")
 ```
 
 > Hait, S. (2025). *decisionpaths: Construct and Audit Longitudinal
-> Decision Paths*. R package version 0.1.0.
+> Decision Paths*. R package version 0.1.1.
 > <https://github.com/causalfragility-lab/decisionpaths>
 
 ## Author
