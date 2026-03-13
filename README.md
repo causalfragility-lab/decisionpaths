@@ -13,7 +13,7 @@ MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.or
 
 `decisionpaths` is an R package for constructing and auditing
 **longitudinal decision paths** from panel data. It implements the
-**Decision Infrastructure Paradigm** (Hait, 2025), which
+**Decision Infrastructure Paradigm** (Hait, 2026), which
 reconceptualises institutional AI systems not as static classifiers but
 as infrastructure that generates time-ordered binary decision sequences
 — the decision path — as the primary empirical object.
@@ -162,14 +162,17 @@ dpath audit, by(sesq)
 
 ## Citation
 
-``` r
+If you use `decisionpaths` in your work, please cite:
+
+Hait, S. (2026). *decisionpaths: Construct and Audit Longitudinal Decision Paths*.  
+R package version 0.1.0.  
+https://CRAN.R-project.org/package=decisionpaths  
+https://doi.org/10.32614/CRAN.package.decisionpaths
+
+You can generate the citation in R with:
+
+```r
 citation("decisionpaths")
-```
-
-> Hait, S. (2025). *decisionpaths: Construct and Audit Longitudinal
-> Decision Paths*. R package version 0.1.1.
-> <https://github.com/causalfragility-lab/decisionpaths>
-
 ## Author
 
 **Subir Hait**\
