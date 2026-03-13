@@ -106,7 +106,7 @@ plot(eq)
 ## Infrastructure Types
 
 The package operationalises four infrastructure types defined in Hait
-(2025):
+(2026):
 
 | Type | Description | DRI | Entropy |
 |----|----|----|----|
