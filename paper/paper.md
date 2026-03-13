@@ -29,7 +29,9 @@ point-in-time treatments, but as infrastructures that generate
 time-ordered sequences of binary decisions. These sequences, referred to
 as *decision paths*, represent the cumulative institutional actions
 experienced by individuals across time and form the primary empirical
-object of analysis.
+object of analysis.The package is designed for researchers working with
+longitudinal institutional decision data in domains such as education,
+health systems, public policy, and organizational analytics.
 
 The package provides a five-step workflow for auditing institutional
 decision systems. Researchers can (1) construct a `decision_path` object
