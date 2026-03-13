@@ -25,21 +25,28 @@ bibliography: paper.bib
 decision paths from panel data. The package implements the **Decision
 Infrastructure Paradigm** [@hait2026], which conceptualizes institutional
 artificial intelligence (AI) systems not as static classifiers or
-point-in-time treatments but as infrastructures that generate time-ordered
-sequences of binary decisions. These sequences, referred to as *decision
-paths*, represent the cumulative institutional actions experienced by an
-individual across time and serve as the primary empirical object of analysis.
+point-in-time treatments, but as infrastructures that generate
+time-ordered sequences of binary decisions. These sequences, referred to
+as *decision paths*, represent the cumulative institutional actions
+experienced by individuals across time and form the primary empirical
+object of analysis.
 
-The package provides a five-step decision infrastructure audit workflow.
-Researchers can (1) construct a `decision_path` object from longitudinal
-panel data, (2) compute per-unit path descriptors such as dosage, switching
-rate, onset, and duration, (3) estimate the Decision Reliability Index
-(DRI), a measure of temporal stability inspired by classical reliability
-theory [@cronbach1951], (4) quantify system-level trajectory diversity using
-Shannon decision-path entropy [@shannon1948], and (5) evaluate subgroup
-equity using standardized mean differences in path-level outcomes.
-A companion Stata package, `dpath`, implements the same framework for Stata
-users.
+The package provides a five-step workflow for auditing institutional
+decision systems. Researchers can (1) construct a `decision_path` object
+from longitudinal panel data, (2) compute per-unit path descriptors
+including dosage, switching rate, onset, and duration, (3) estimate the
+Decision Reliability Index (DRI), a measure of temporal stability inspired
+by classical reliability theory [@cronbach1951; @nunnally1978], (4)
+quantify trajectory diversity using Shannon decision-path entropy
+[@shannon1948], and (5) evaluate subgroup equity using standardized mean
+differences in path-level outcomes.
+
+The package enables researchers to examine how algorithmic decision
+systems evolve over time, complementing existing approaches in causal
+inference and sequential decision analysis that emphasize dynamic
+treatment regimes and temporally ordered interventions
+[@rubin1974; @robins2000; @murphy2003]. A companion Stata package,
+`dpath`, implements the same framework for Stata users.
 
 # Statement of Need
 
@@ -48,39 +55,49 @@ institutions, healthcare organizations, and public policy environments,
 where they repeatedly assign binary decisions to individuals across time.
 Examples include early-warning systems that flag students for intervention,
 clinical decision support systems that recommend treatments, and automated
-risk scoring systems used in public administration.
+risk scoring systems used in administrative decision-making.
 
-Despite their dynamic nature, these systems are typically analyzed using
-static representations such as single treatment indicators or observed
-covariates. Quantitative research has largely treated algorithmic decisions
-as variables, treatments, or measurement instruments [@hait2026]. These
-representations obscure the temporal structure of decision processes.
+Automated decision systems have become an important subject of study in
+fields such as algorithmic governance, educational data mining, and
+algorithmic fairness [@barocas2019; @kizilcec2022]. However, empirical
+analyses typically represent algorithmic decisions using static variables,
+such as treatment indicators or observed covariates. These representations
+obscure the temporal structure of decision processes.
 
-This limitation is important because AI-based systems generate sequences of
-institutional actions rather than isolated decisions. Two individuals with
-similar observed characteristics may receive different cumulative exposures
-to interventions, experience different levels of decision instability, or
-encounter interventions at different points in their trajectories. These
-differences can influence outcomes, complicate causal interpretation, and
-contribute to distributional inequalities.
+This limitation is important because algorithmic systems generate
+*sequences* of institutional actions rather than isolated decisions.
+Two individuals with similar observed characteristics may receive
+different cumulative exposures to interventions, experience different
+levels of decision instability, or encounter interventions at different
+points in their trajectories. Such differences may influence outcomes,
+complicate causal interpretation, and contribute to distributional
+inequalities.
 
 `decisionpaths` provides a software implementation of the Decision
 Infrastructure Paradigm, enabling researchers to:
 
 - Represent institutional decision systems as generators of
   time-ordered decision sequences rather than static variables;
+
 - Quantify temporal consistency of decision assignment using the
-  Decision Reliability Index (DRI), defined as  
+  Decision Reliability Index (DRI), defined as
+
   $\text{DRI} = 1 - \mathbb{E}[\text{Switch}_i]$,
+
   where $\text{Switch}_i$ denotes the individual switching rate
-  [@cronbach1951; @hait2026];
-- Measure decision-path entropy  
+  [@cronbach1951; @nunnally1978];
+
+- Measure decision-path entropy
+
   $H^* = -\sum_j p(\omega_j)\log_2 p(\omega_j)$
-  to summarize the diversity of trajectories generated by a system
-  [@shannon1948];
+
+  to summarize the diversity of trajectories generated by a decision
+  system [@shannon1948];
+
 - Classify infrastructures into four system types—static (Type I),
   periodic (Type II), continuous (Type III), and human-in-the-loop
   (Type IV)—each implying different temporal decision dynamics;
+
 - Evaluate subgroup disparities in decision exposure and stability
   using standardized mean differences at the level of decision paths.
 
@@ -91,18 +108,18 @@ and equity auditing for binary decision sequences in panel data.
 # Decision Infrastructure Paradigm
 
 The Decision Infrastructure Paradigm models an AI-mediated decision system
-observed across discrete time periods $t = 1, \ldots, T$. The decision
-generation process can be written as
+observed across discrete time periods $t = 1, \ldots, T$.
+The decision-generation process can be written as
 
 $$
-D_t = g(A_t, X_t)
+D_t = g(A_t, X_t),
 $$
 
-where $X_t$ represents observed information at time $t$ and $A_t$ denotes
-the internal state of the decision system (such as thresholds, model
-parameters, or policy rules).
+where $X_t$ represents observed information at time $t$ and $A_t$
+denotes the internal state of the decision system (for example model
+parameters, thresholds, or policy rules).
 
-Systems may adapt over time through a state-update mechanism
+Systems may evolve over time through a state-update mechanism
 
 $$
 A_{t+1} = h(A_t, D_t, Y_t),
@@ -110,8 +127,9 @@ $$
 
 where $Y_t$ represents observed outcomes or feedback signals.
 
-The framework is algorithm-agnostic and does not require knowledge of the
-functions $g(\cdot)$ or $h(\cdot)$. Instead, the observable decision path
+The framework is algorithm-agnostic and does not require knowledge of
+the functions $g(\cdot)$ or $h(\cdot)$. Instead, the observable decision
+path
 
 $$
 \mathcal{P}_i = \{D_{i1}, D_{i2}, \ldots, D_{iT_i}\}
@@ -123,7 +141,7 @@ infrastructure [@hait2026].
 # Core Functions
 
 `decisionpaths` provides six user-facing functions organized around the
-five-step decision infrastructure audit.
+five-step decision infrastructure audit workflow.
 
 | Function | Description |
 |---|---|
@@ -146,12 +164,12 @@ and four infrastructure types (6,400 observations) illustrates how the
 proposed diagnostics characterize different decision systems. Static
 systems produce high reliability and low entropy, reflecting stable
 decision assignment. In contrast, continuously adaptive systems generate
-lower reliability and higher entropy, reflecting more complex and variable
-decision trajectories.
+lower reliability and higher entropy, reflecting more complex and
+variable decision trajectories.
 
-The simulation results (Table 1) confirm that the diagnostics distinguish
-different temporal decision structures and capture variation in cumulative
-decision exposure across socioeconomic groups.
+The simulation results (Table 1) demonstrate that the diagnostics
+distinguish different temporal decision structures and capture variation
+in cumulative decision exposure across socioeconomic groups.
 
 | Type | DRI | Entropy (bits) | Unique Paths | Dosage Gap (Q1 vs Q4) |
 |---|---|---|---|---|
@@ -166,18 +184,16 @@ The simulation script is available in the repository at
 # Companion Stata Package
 
 A companion Stata implementation, `dpath`, provides the same workflow for
-constructing and auditing longitudinal decision paths. The package includes
-the commands `dpath build`, `dpath describe`, `dpath dri`, `dpath entropy`,
-`dpath equity`, and `dpath audit`, mirroring the functionality of the R
-implementation.
+constructing and auditing longitudinal decision paths. The package
+includes the commands `dpath build`, `dpath describe`, `dpath dri`,
+`dpath entropy`, `dpath equity`, and `dpath audit`, mirroring the
+functionality of the R implementation.
 
-The package is available through the Statistical Software Components (SSC)
-archive and can be installed in Stata using:
-
+The package is available through the Statistical Software Components
+(SSC) archive and can be installed in Stata using:
 ssc install dpath
 
-The source code and documentation are also available at  
+The source code and documentation are available at  
 https://github.com/causalfragility-lab/dpath.
-
 
 # References
