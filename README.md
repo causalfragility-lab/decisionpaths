@@ -113,7 +113,7 @@ The package operationalises four infrastructure types defined in Hait
 | I — Static | Decision fixed at baseline, never changes | ~1.0 | Very low |
 | II — Periodic | Recalibrated every N waves | ~0.6–0.8 | Medium |
 | III — Continuous | Updates every wave (fully adaptive) | ~0.4–0.6 | High |
-| IV — Human-in-loop | Algorithmic decision + human override | ~0.3–0.5 | High |
+| IV — Human-in-the-loop | Algorithmic decision + human override | ~0.3–0.5 | High |
 
 ## Simulation Results
 
@@ -152,7 +152,7 @@ dpath audit, by(sesq)
   of tests. *Psychometrika*, 16(3), 297–334.
   <https://doi.org/10.1007/BF02310555>
 
-- Hait, S. (2025). Artificial intelligence as decision infrastructure:
+- Hait, S. (2026). Artificial intelligence as decision infrastructure:
   Rethinking institutional decision processes. Michigan State
   University. <https://github.com/causalfragility-lab/decisionpaths>
 
