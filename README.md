@@ -126,7 +126,7 @@ theoretical predictions:
 | I — Static       | **1.000** | 1.00           | 2            | 0.40                |
 | II — Periodic    | 0.585     | 6.75           | 127          | 0.49                |
 | III — Continuous | 0.616     | 6.54           | 122          | 0.31                |
-| IV — Human-loop  | 0.536     | 6.88           | 132          | 0.23                |
+|IV — Human-in-the-loop | 0.536     | 6.88           | 132          | 0.23                |
 
 All 11 validation checks passed. The full simulation script is in
 `inst/examples/simulation_study.R`.
